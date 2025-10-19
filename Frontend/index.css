@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #2e86c1;
+    margin: 0;
+    padding: 0;
+     transition: 1s;
+    color: 1s;
+    transform-style: preserve-3d;
+    
+}
+body.dark{
+    background-color: #121212;
+    color: #e0e0e0;
+    transition: 1s;
+    color: 1s;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+main {
+    max-width: 500px;
+    margin: 30px auto;
+   
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1.22px solid #1986ce
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#message {
+    margin-top: 15px;
+    color: green;
+    font-weight: bold;
+}
+.logo {
+    max-height: 120px;   /* won’t exceed this */
+    width: auto;
+    display: block;
+    margin: 0 auto 15px;
+}
+#toggleBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

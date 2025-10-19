@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civic Issue Reporting</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+        <header>
+            <img src="logo.png" alt="GrievEase Logo" class="logo">
+            <h1>Crowd-Sourced Civic Issue Reporting</h1>
+        </header>
+
+        <button id="toggleBtn">Switch to Dark Mode</button>
+
+        <main>
+            <form id="issueForm">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="Mobile">Mobile Number :</label>
+                <input type="number" id="Mobile" name="Mobile" required>
+                <label for="category">Select Category:</label>
+                <select id="category" name="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Infrastructure">Infrastructure</option>
+                    <option value="Civic">Civic Services</option>
+                    <option value="Environment">Environment / Safety</option>
+                </select>
+
+                <label for="subCategory">Select Issue:</label>
+                <select id="subCategory" name="subCategory" required>
+                    <option value="subOptions">Select Issue</option>
+                </select>
+
+                <label for="description">Issue Description:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+
+                <button id="submission" type="submit">Submit Issue</button>
+            </form>
+
+            <div id="message"></div>
+        </main>
+
+        <script src="index.js"></script>      
+    
+    </body>
+</html>
