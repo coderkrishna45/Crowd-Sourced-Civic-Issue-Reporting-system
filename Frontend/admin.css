@@ -6,13 +6,39 @@ body {
     color: #333;
 }
 
-/* --- Header Styles --- */
+/* --- Header Styles (UPDATED) --- */
 header {
     background-color: #2c3e50; /* A professional dark blue */
     color: white;
-    text-align: center;
-    padding: 1rem 0;
+    padding: 1rem 2rem; /* Adjusted padding for side space */
     margin-bottom: 2rem;
+    
+    /* --- NEW FLEXBOX PROPERTIES --- */
+    display: flex;
+    justify-content: space-between; /* Pushes items to opposite ends */
+    align-items: center;            /* Vertically aligns items in the middle */
+}
+
+/* New rule to control the h1 inside the flex header */
+header h1 {
+    margin: 0; /* Removes default margin for better alignment */
+    font-size: 1.5rem; /* A good size for the title */
+}
+
+/* --- NEW Navigation Link Style --- */
+.nav-link {
+    padding: 8px 16px;
+    background-color: #3498db; /* A friendly blue */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    white-space: nowrap; /* Prevents the text from wrapping */
+    transition: background-color 0.2s ease;
+}
+
+.nav-link:hover {
+    background-color: #2980b9; /* A darker blue on hover */
 }
 
 /* --- Main Content & Table Container --- */
@@ -20,11 +46,6 @@ main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
 }
 
 /* --- Table Styles --- */
@@ -49,6 +70,7 @@ th, td {
 tbody tr:hover {
     background-color: #f5f5f5; /* Highlights a row when you hover over it */
 }
+
 /* --- Action Button Styles --- */
 td button {
   padding: 6px 12px;

@@ -4,46 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Civic Issue Reporting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <div class="page-container">
         <header>
             <img src="logo.png" alt="GrievEase Logo" class="logo">
-            <h1>Crowd-Sourced Civic Issue Reporting</h1>
+            <h1>Report a Civic Issue</h1>
+            <p class="subtitle">Your voice helps us build a better community. Let us know what needs fixing.</p>
         </header>
 
-        <button id="toggleBtn">Switch to Dark Mode</button>
+        <div class="main-content">
+            <main>
+                <form id="issueForm">
+                    <fieldset>
+                        <legend>Your Information</legend>
+                        <div class="form-group">
+                            <label for="name">Your Name:</label>
+                            <div class="input-with-icon">
+                                <span class="icon">👤</span>
+                                <input type="text" id="name" name="name" required placeholder="e.g., Bal Krishan Kumar">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Mobile">Mobile Number:</label>
+                            <div class="input-with-icon">
+                                <span class="icon">📞</span>
+                                <input type="number" id="Mobile" name="Mobile" required placeholder="Enter your 10-digit number">
+                            </div>
+                        </div>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>Issue Details</legend>
+                        <div class="form-group">
+                            <label for="category">Select Category:</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="Infrastructure">Infrastructure</option>
+                                <option value="Civic">Civic Services</option>
+                                <option value="Environment">Environment / Safety</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="subCategory">Select Issue:</label>
+                            <select id="subCategory" name="subCategory" required>
+                                <option value="">Select Issue</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Issue Description:</label>
+                            <textarea id="description" name="description" rows="4" required placeholder="Please provide details about the issue..."></textarea>
+                        </div>
+                    </fieldset>
+                    
+                    <button id="submission" type="submit">Submit Issue</button>
+                </form>
+                <div id="message"></div>
+            </main>
 
-        <main>
-            <form id="issueForm">
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" name="name" required>
+            <aside class="info-panel">
+                <h3>How It Works</h3>
+                <ul class="steps">
+                    <li>
+                        <span class="step-icon">1️⃣</span>
+                        <div>
+                            <h4>Fill Out the Form</h4>
+                            <p>Provide clear details about the issue you've observed.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-icon">2️⃣</span>
+                        <div>
+                            <h4>We Review & Assign</h4>
+                            <p>Our team receives your report and assigns it to the relevant department.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-icon">3️⃣</span>
+                        <div>
+                            <h4>Issue Resolved</h4>
+                            <p>You help make your community a better place for everyone.</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="info-box">
+                    <h4>Why Your Report Matters</h4>
+                    <p>Every report provides valuable data that helps us identify problem areas, allocate resources effectively, and build a safer, cleaner community. Thank you for your contribution!</p>
+                </div>
+            </aside>
+        </div>
+    </div>
 
-                <label for="Mobile">Mobile Number :</label>
-                <input type="number" id="Mobile" name="Mobile" required>
-                <label for="category">Select Category:</label>
-                <select id="category" name="category" required>
-                    <option value="">Select Category</option>
-                    <option value="Infrastructure">Infrastructure</option>
-                    <option value="Civic">Civic Services</option>
-                    <option value="Environment">Environment / Safety</option>
-                </select>
+    <button id="toggleBtn" title="Toggle Dark Mode">🌙</button>
 
-                <label for="subCategory">Select Issue:</label>
-                <select id="subCategory" name="subCategory" required>
-                    <option value="subOptions">Select Issue</option>
-                </select>
-
-                <label for="description">Issue Description:</label>
-                <textarea id="description" name="description" rows="4" required></textarea>
-
-                <button id="submission" type="submit">Submit Issue</button>
-            </form>
-
-            <div id="message"></div>
-        </main>
-
-        <script src="index.js"></script>      
-    
-    </body>
+    <script src="index.js"></script>
+</body>
 </html>

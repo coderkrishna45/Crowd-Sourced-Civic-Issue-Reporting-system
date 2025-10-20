@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deleted Issues - Admin Dashboard</title>
+    <link rel="stylesheet" href="deleted-issues.css">
+</head>
+<body>
+    <header>
+        <h1>Deleted & Archived Issues</h1>
+        <a href="admin.html" class="nav-link">Back to Main Dashboard</a>
+    </header>
+    
+    <main>
+        <h2>Archived Issues</h2>
+        <p class="subtitle">These issues have been marked as deleted. They can be restored or permanently deleted.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="deleted-issues-table-body">
+                <!-- Deleted issues will be dynamically inserted here by JavaScript -->
+            </tbody>
+        </table>
+    </main>
+
+    <script src="deleted-issues.js"></script>
+</body>
+</html>

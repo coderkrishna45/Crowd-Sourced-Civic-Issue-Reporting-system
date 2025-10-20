@@ -37,9 +37,18 @@ const Issue = mongoose.model('Issue', issueSchema);
 // GET all issues
 app.get('/api/issues', async (req, res) => {
   try {
-    const allIssues = await Issue.find();
+    const allIssues = await Issue.find({status:{$ne:'Deleted'}});
     res.json(allIssues);
   } catch (error) {
+    res.status(500).send('Server error');
+  }
+});
+
+app.get('/api/issues/deleted',async(req,res)=>{
+  try{
+    const deletedIssue = await Issue.find({status:'Deleted'});
+    res.json(deletedIssue);
+  }catch(error){
     res.status(500).send('Server error');
   }
 });
@@ -74,10 +83,14 @@ app.patch('/api/issues/:id', async (req, res) => {
 // DELETE an issue
 app.delete('/api/issues/:id', async (req, res) => {
   try {
-    const deletedIssue = await Issue.findByIdAndDelete(req.params.id);
+    const deletedIssue = await Issue.findByIdAndUpdate(req.params.id , 
+      {status:'Deleted',
+        new : true
+      }
+    );
     if (!deletedIssue) return res.status(404).send('Issue not found');
     console.log(`Issue with ID ${req.params.id} has been deleted.`);
-    res.status(204).send();
+    res.json(deletedIssue);
   } catch (error) {
     res.status(500).send('Server error');
   }
