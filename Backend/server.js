@@ -34,24 +34,25 @@ const Issue = mongoose.model('Issue', issueSchema);
 
 // --- API ROUTES (ALL UPGRADED FOR MONGODB) ---
 
-// GET all issues
+// GET all non-deleted issues
 app.get('/api/issues', async (req, res) => {
   try {
-    const allIssues = await Issue.find({status:{$ne:'Deleted'}});
+    const allIssues = await Issue.find({ status: { $ne: 'Deleted' } });
     res.json(allIssues);
   } catch (error) {
     res.status(500).send('Server error');
   }
 });
 
-app.get('/api/issues/deleted',async(req,res)=>{
-  try{
-    const deletedIssue = await Issue.find({status:'Deleted'});
-    res.json(deletedIssue);
-  }catch(error){
-    res.status(500).send('Server error');
-  }
-});
+// GET all DELETED issues
+app.get('/api/issues/deleted', async (req, res) => {
+    try {
+      const deletedIssues = await Issue.find({ status: 'Deleted' });
+      res.json(deletedIssues);
+    } catch (error) {
+      res.status(500).send('Server error');
+    }
+  });
 
 // CREATE a new issue
 app.post('/api/issues', async (req, res) => {
@@ -80,16 +81,33 @@ app.patch('/api/issues/:id', async (req, res) => {
   }
 });
 
-// DELETE an issue
+// RESTORE an issue
+app.patch('/api/issues/:id/restore', async (req, res) => {
+    try {
+      const restoredIssue = await Issue.findByIdAndUpdate(
+        req.params.id,
+        { status: 'Recovered' },
+        { new: true }
+      );
+      if (!restoredIssue) return res.status(404).send('Issue not found');
+      console.log("Issue restored:", restoredIssue);
+      res.json(restoredIssue);
+    } catch (error) {
+      res.status(500).send('Server error');
+    }
+});
+
+
+// SOFT DELETE an issue
 app.delete('/api/issues/:id', async (req, res) => {
   try {
-    const deletedIssue = await Issue.findByIdAndUpdate(req.params.id , 
-      {status:'Deleted',
-        new : true
-      }
+    const deletedIssue = await Issue.findByIdAndUpdate(
+        req.params.id, 
+        { status: 'Deleted' },
+        { new: true }
     );
     if (!deletedIssue) return res.status(404).send('Issue not found');
-    console.log(`Issue with ID ${req.params.id} has been deleted.`);
+    console.log(`Issue with ID ${req.params.id} has been soft-deleted.`);
     res.json(deletedIssue);
   } catch (error) {
     res.status(500).send('Server error');

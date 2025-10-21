@@ -66,22 +66,21 @@ issueTableBody.addEventListener('click', (e) => {
         const row = clickedElement.closest('tr');
         const issueId = row.dataset.id;
 
-        // Add a confirmation before deleting
-        if (confirm(`Are you sure you want to delete issue #${issueId}?`)) {
+        if (confirm(`Are you sure you want to archive issue #${issueId}? This will move it to the deleted items page.`)) {
             fetch(`http://localhost:3000/api/issues/${issueId}`, {
                 method: 'DELETE',
             })
             .then(response => {
                 if (response.ok) {
                     row.remove();
-                    console.log(`Successfully deleted issue #${issueId}`);
+                    console.log(`Successfully soft-deleted issue #${issueId}`);
                 } else {
-                    alert('Failed to delete issue. The server responded with an error.');
+                    alert('Failed to archive issue. The server responded with an error.');
                 }
             })
             .catch(error => {
-                console.error('Error deleting issue:', error);
-                alert('An error occurred while trying to delete the issue.');
+                console.error('Error archiving issue:', error);
+                alert('An error occurred while trying to archive the issue.');
             });
         }
     }

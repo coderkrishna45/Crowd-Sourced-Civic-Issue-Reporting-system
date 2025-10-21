@@ -19,7 +19,6 @@ category.addEventListener("change", function () {
         subCategory.appendChild(el);
     });
 });
-
 // ... (Your subOptions and change listener code is correct) ...
 
 document.getElementById("issueForm").addEventListener("submit", function (e) {
@@ -39,7 +38,7 @@ document.getElementById("issueForm").addEventListener("submit", function (e) {
 
     const issueData = {
         name: name,
-        mobile: mobile, // Typo fixed
+        mobile: mobile,
         category: categoryValue,
         title: subCategoryValue, // Send 'subCategory' as 'title' to match the Schema
         description: description
@@ -67,6 +66,8 @@ document.getElementById("issueForm").addEventListener("submit", function (e) {
         alert(`There was an error: ${error}. Please try again.`);
     });
 });
+
+// ... (Your dark mode toggle code is correct) ...
 
 // Dark Mode Toggle
 const toggle = document.getElementById("toggleBtn");
