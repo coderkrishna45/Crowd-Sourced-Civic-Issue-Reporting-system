@@ -1,7 +1,7 @@
 const issueTableBody = document.querySelector('#Tbody');
 
 function fetchAndDisplayIssue() {
-    fetch('http://localhost:3000/api/issues')
+    fetch('https://crowd-sourced-civic-issue-reporting.onrender.com/api/issues')
         .then(response => response.json())
         .then(issues => {
             issueTableBody.innerHTML = '';
@@ -46,7 +46,7 @@ issueTableBody.addEventListener('click', (e) => {
             const row = clickedElement.closest('tr');
             const issueId = row.dataset.id;
 
-            fetch(`http://localhost:3000/api/issues/${issueId}`, {
+            fetch(`https://crowd-sourced-civic-issue-reporting.onrender.com/api/issues/${issueId}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ status: newStatus }),
@@ -67,7 +67,7 @@ issueTableBody.addEventListener('click', (e) => {
         const issueId = row.dataset.id;
 
         if (confirm(`Are you sure you want to archive issue #${issueId}? This will move it to the deleted items page.`)) {
-            fetch(`http://localhost:3000/api/issues/${issueId}`, {
+            fetch(`https://crowd-sourced-civic-issue-reporting.onrender.com/api/issues/${issueId}`, {
                 method: 'DELETE',
             })
             .then(response => {

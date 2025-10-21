@@ -44,7 +44,7 @@ document.getElementById("issueForm").addEventListener("submit", function (e) {
         description: description
     };
 
-    fetch('http://localhost:3000/api/issues', {
+    fetch('https://crowd-sourced-civic-issue-reporting.onrender.com/api/issues', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'

@@ -1,7 +1,7 @@
 const tableBody = document.querySelector('#deleted-issues-table-body');
 
 function fetchAndDisplayDeletedIssue() {
-    fetch('http://localhost:3000/api/issues/deleted')
+    fetch('https://crowd-sourced-civic-issue-reporting.onrender.com/api/issues/deleted')
         .then(response => response.json())
         .then(issues => {
             tableBody.innerHTML = '';
@@ -40,7 +40,7 @@ tableBody.addEventListener('click', (event) => {
         const issueId = row.dataset.id;
 
         if (confirm(`Are you sure you want to restore issue #${issueId}?`)) {
-            fetch(`http://localhost:3000/api/issues/${issueId}/restore`, {
+            fetch(`https://crowd-sourced-civic-issue-reporting.onrender.com/api/issues/${issueId}/restore`, {
                 method: 'PATCH'
             })
             .then(response => {
@@ -61,7 +61,7 @@ tableBody.addEventListener('click', (event) => {
         const issueId = row.dataset.id;
 
         if (confirm(`ARE YOU SURE you want to PERMANENTLY delete issue #${issueId}? This cannot be undone.`)) {
-            fetch(`http://localhost:3000/api/issues/${issueId}`, {
+            fetch(`https://crowd-sourced-civic-issue-reporting.onrender.com/api/issues/${issueId}`, {
                 method: 'DELETE'
             })
             .then(response => {
